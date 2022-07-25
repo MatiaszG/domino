@@ -53,4 +53,3 @@ def execute_inverted_algorithm(setup):
         new_setup.append(setup[len(setup)-1])
 
     return new_setup
-
