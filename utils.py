@@ -29,4 +29,28 @@ def execute_algorithm(setup):
 
 
 def execute_inverted_algorithm(setup):
-    pass
+    new_setup = []
+    if(setup[0] == '\\' and setup[1] == '\\'):
+        new_setup.append('|')
+    elif(setup[0] == '/' and setup[1] != '/'):
+        new_setup.append('|')
+    else:
+        new_setup.append(setup[0])
+
+    for j in range(1, len(setup)-1):
+        if(setup[j] == '/' and setup[j+1] != '/' and setup[j-1] == '/'):
+            new_setup.append('|')
+        elif(setup[j] == '\\' and setup[j-1] != '\\' and setup[j+1] == '\\'):
+            new_setup.append('|')
+        else:
+            new_setup.append(setup[j])
+
+    if(setup[len(setup)-1] == '\\' and setup[len(setup)-2] != '\\'):
+        new_setup.append('|')
+    elif(setup[len(setup)-1] == '/' and setup[len(setup)-2] == '/'):
+        new_setup.append('|')
+    else:
+        new_setup.append(setup[len(setup)-1])
+
+    return new_setup
+
